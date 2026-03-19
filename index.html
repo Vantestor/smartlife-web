@@ -9,6 +9,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
+    <!-- Iconografía FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --azul-profundo: #050A14;
@@ -134,6 +136,37 @@
             color: var(--oro-exito);
         }
 
+        .btn-glow {
+            background: var(--oro-exito);
+            color: var(--azul-profundo);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            border: 1px solid var(--oro-brillo);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glow:hover {
+            background: var(--oro-brillo);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            transform: scale(1.05);
+        }
+
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .btn-glow:hover::after {
+            opacity: 1;
+        }
+
         /* --- SERVICIOS ORBITALES --- */
         .servicios {
             padding: 100px 10%;
@@ -175,6 +208,17 @@
             color: var(--oro-exito);
             margin-bottom: 15px;
             font-weight: 700;
+        }
+
+        .card i {
+            font-size: 2rem;
+            color: var(--oro-exito);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .cta-container {
+            margin-top: 60px;
         }
 
         /* --- RESPONSIVE --- */
@@ -224,6 +268,146 @@
                 padding: 60px 5%;
             }
         }
+
+        /* --- PROPUESTA DE VALOR (MODO CLARO) --- */
+        .propuesta-valor {
+            padding: 100px 10%;
+            background: #FFFFFF;
+            position: relative;
+            color: var(--azul-profundo);
+        }
+
+        .container-propuesta {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .texto-introductorio {
+            flex: 1.2;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .texto-introductorio h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: var(--azul-profundo);
+            line-height: 1.2;
+        }
+
+        .texto-introductorio h2 span { 
+            color: var(--oro-exito); 
+        }
+
+        .texto-introductorio p { 
+            margin-bottom: 25px; 
+            color: #444444;
+            font-size: 1.1rem;
+        }
+
+        .texto-introductorio p.resaltado {
+            font-weight: 400;
+        }
+
+        .texto-introductorio p.resaltado span { 
+            color: var(--oro-exito); 
+            font-weight: 700; 
+        }
+
+        .pilares-valor {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .capsula-solida {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #FFFFFF;
+            border: 1px solid #F0F0F0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 60px;
+            padding: 25px 35px;
+            transition: all 0.4s ease;
+        }
+
+        .capsula-solida:hover {
+            border-color: var(--oro-exito);
+            transform: translateX(15px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .capsula-solida i {
+            font-size: 1.8rem;
+            color: var(--oro-exito);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .capsula-solida p {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--azul-profundo);
+            margin: 0;
+        }
+
+        /* --- WHATSAPP FLOTANTE --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse-green 2s infinite;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(5deg);
+            background-color: #20BA5A;
+        }
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- RESPONSIVE TICKET #3 --- */
+        @media (max-width: 992px) {
+            .container-propuesta { 
+                flex-direction: column; 
+                text-align: center;
+                gap: 50px;
+            }
+            .texto-introductorio {
+                text-align: center;
+            }
+            .capsula-solida { 
+                flex-direction: column; 
+                border-radius: 30px; 
+                padding: 30px;
+            }
+            .capsula-solida:hover {
+                transform: translateY(-5px);
+            }
+        }
     </style>
 </head>
 
@@ -242,23 +426,78 @@
         </div>
     </section>
 
-    <section class="servicios">
-        <h2 class="titulo-seccion">Servicios <span>Orbitales</span></h2>
+    <section class="servicios" id="metodologia">
+        <h2 class="titulo-seccion">Los 6 Pilares del <span>Bienestar Digital</span></h2>
         <div class="grid-servicios">
             <div class="card">
-                <h3>Arquitectura Mental</h3>
-                <p>Entrenamiento cognitivo estratégico para dominar tu enfoque diario.</p>
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h3>Equilibrio Digital</h3>
+                <p>Encuentra la armonía perfecta entre tus herramientas tecnológicas y tu paz interior.</p>
             </div>
             <div class="card">
-                <h3>Bio-Programación</h3>
-                <p>Nutrición y energía vital diseñada para líderes de alto impacto.</p>
+                <i class="fa-solid fa-bullseye"></i>
+                <h3>Enfoque Profundo</h3>
+                <p>Blindaje cognitivo para ignorar el ruido y potenciar tu genialidad creativa.</p>
             </div>
             <div class="card">
-                <h3>Evolución Prolija</h3>
-                <p>Tu ruta práctica para equilibrar negocio, familia y bienestar personal.</p>
+                <i class="fa-solid fa-power-off"></i>
+                <h3>Desconexión Consciente</h3>
+                <p>Rituales estratégicos para apagar el sistema y recargar tu energía vital.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-bolt-lightning"></i>
+                <h3>Productividad Humana</h3>
+                <p>Sistemas de alto rendimiento que respetan tu ritmo biológico y mental.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-brain"></i>
+                <h3>Salud Mental 4.0</h3>
+                <p>Gestión emocional en la era de la inmediatez para una mente inquebrantable.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-user-group"></i>
+                <h3>Relaciones Reales</h3>
+                <p>Reconecta con lo esencial: vínculos humanos que trascienden la pantalla.</p>
+            </div>
+        </div>
+        <div class="cta-container">
+            <a href="#" class="btn btn-glow">Agenda tu Diagnóstico Digital</a>
+        </div>
+    </section>
+
+    <section class="propuesta-valor" id="propuesta">
+        <div class="container-propuesta">
+            <div class="texto-introductorio">
+                <h2>Por qué Smartlife es tu <br><span>Siguiente Nivel</span></h2>
+                <p>Durante estos años de experiencia profesional una pregunta ha venido guiando todo mi caminar: ¿Por qué si todos queremos bienestar, muy pocos lo consiguen? ¿Te pasa a vos también?</p>
+                <p>Es por eso que creé Smartlife Escuela de Bienestar, un espacio para nosotros, donde podrás descubrir, construir y vivir el bienestar auténtico y donde tu vida real es tu punto de partida.</p>
+                <p class="resaltado">Lo que vas a encontrar es <span>Bienestar Estratégico</span>. Vamos a diseñar y disfrutar juntos/as un bienestar que es motor para:</p>
+            </div>
+
+            <div class="pilares-valor">
+                <div class="capsula-solida">
+                    <i class="fa-solid fa-crosshairs"></i>
+                    <p>Liderar tu bienestar con más claridad y confianza</p>
+                </div>
+                <div class="capsula-solida">
+                    <i class="fa-solid fa-building-user"></i>
+                    <p>Construir y vivir una familia y/o negocio que reflejen lo que sos</p>
+                </div>
+                <div class="capsula-solida">
+                    <i class="fa-solid fa-star"></i>
+                    <p>Disfrutar del proceso, sin culpas ni complicaciones innecesarias</p>
+                </div>
+                <div class="capsula-solida">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <p>Recuperar tu energía y vitalidad para lo que de verdad importa</p>
+                </div>
             </div>
         </div>
     </section>
+
+    <a href="https://wa.me/50688000000" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
 </body>
 
