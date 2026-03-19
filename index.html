@@ -13,14 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --azul-profundo: #050A14;
-            --azul-intelectual: #0A192F;
             --oro-exito: #D4AF37;
-            --oro-brillo: #F1D279;
-            /* Lighter gold for hover */
+            --azul-profundo: #050A14; /* Solo para textos */
+            --gris-suave: #F8F9FA;
             --blanco-puro: #FFFFFF;
-            --vidrio: rgba(255, 255, 255, 0.03);
-            --borde-vidrio: rgba(255, 255, 255, 0.1);
+            --texto-oscuro: #1A1A1A;
+            --sombra-suave: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -34,14 +32,27 @@
         }
 
         body {
-            background: linear-gradient(135deg, #050A14 0%, #0A192F 100%);
-            background-attachment: fixed;
-            color: var(--blanco-puro);
+            background-color: var(--blanco-puro);
+            color: var(--texto-oscuro);
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
             -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ajuste de Secciones */
+        section {
+            background-color: var(--blanco-puro) !important;
+            position: relative;
+        }
+
+        h1, h2, h3 {
+            color: var(--azul-profundo);
+            font-family: 'Playfair Display', serif;
+        }
+
+        p {
+            color: #444444;
         }
 
         /* --- HERO SECTION --- */
@@ -51,8 +62,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 10%;
-            background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
-            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 40%);
         }
 
         .hero-content {
@@ -61,7 +71,6 @@
         }
 
         .hero-content h1 {
-            font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             line-height: 1.1;
             margin-bottom: 20px;
@@ -75,23 +84,18 @@
         .hero-content p {
             font-size: 1.1rem;
             margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Espacio para la foto de Emilia (Placeholder) */
         .hero-image {
             width: 450px;
             height: 550px;
-            background: var(--vidrio);
-            border: 1px solid var(--borde-vidrio);
+            background: var(--blanco-puro);
+            border: 1px solid rgba(0,0,0,0.05);
             border-radius: 30px;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            box-shadow: var(--sombra-suave);
         }
 
         .hero-image::after {
@@ -112,69 +116,35 @@
             text-align: center;
         }
 
-        .btn-oro {
+        .btn-primary {
             background: var(--oro-exito);
-            color: var(--azul-profundo);
-            margin-right: 15px;
-            border: 1px solid transparent;
+            color: white;
+            border: none;
         }
 
-        .btn-oro:hover {
-            background: var(--oro-brillo);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        .btn-primary:hover {
+            background: #B5932F;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
             transform: translateY(-2px);
         }
 
-        .btn-outline {
-            border: 1px solid var(--blanco-puro);
-            color: var(--blanco-puro);
-        }
-
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--oro-exito);
-            color: var(--oro-exito);
-        }
-
-        .btn-glow {
-            background: var(--oro-exito);
+        .btn-secondary {
+            border: 2px solid var(--azul-profundo);
             color: var(--azul-profundo);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-            border: 1px solid var(--oro-brillo);
-            position: relative;
-            overflow: hidden;
         }
 
-        .btn-glow:hover {
-            background: var(--oro-brillo);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-            transform: scale(1.05);
+        .btn-secondary:hover {
+            background: var(--azul-profundo);
+            color: white;
         }
 
-        .btn-glow::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
-            opacity: 0;
-            transition: 0.5s;
-        }
-
-        .btn-glow:hover::after {
-            opacity: 1;
-        }
-
-        /* --- SERVICIOS ORBITALES --- */
+        /* --- SERVICIOS --- */
         .servicios {
             padding: 100px 10%;
             text-align: center;
         }
 
         .titulo-seccion {
-            font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             margin-bottom: 50px;
         }
@@ -185,29 +155,23 @@
             gap: 30px;
         }
 
-        .card {
-            background: var(--vidrio);
+        /* Tarjetas de Servicios en Blanco con Sombra */
+        .card, .service-item, .capsula-vidrio, .capsula-solida {
+            background: var(--blanco-puro) !important;
             padding: 40px;
             border-radius: 20px;
-            border: 1px solid var(--borde-vidrio);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(0,0,0,0.05) !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+            color: var(--texto-oscuro) !important;
+            backdrop-filter: none !important;
             transition: all 0.5s ease;
             cursor: pointer;
         }
 
-        .card:hover {
+        .card:hover, .capsula-vidrio:hover, .capsula-solida:hover {
+            border-color: var(--oro-exito) !important;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1) !important;
             transform: translateY(-10px);
-            border-color: var(--oro-exito);
-            background: rgba(212, 175, 55, 0.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .card h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--oro-exito);
-            margin-bottom: 15px;
-            font-weight: 700;
         }
 
         .card i {
@@ -221,60 +185,9 @@
             margin-top: 60px;
         }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 992px) {
-            .hero {
-                flex-direction: column;
-                height: auto;
-                padding: 120px 5% 60px;
-                text-align: center;
-            }
-
-            .hero-content {
-                margin-bottom: 50px;
-            }
-
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero-image {
-                width: 100%;
-                max-width: 400px;
-                height: 450px;
-            }
-
-            .btn-oro {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-
-            .titulo-seccion {
-                font-size: 2rem;
-            }
-
-            .servicios {
-                padding: 60px 5%;
-            }
-        }
-
-        /* --- PROPUESTA DE VALOR (MODO CLARO) --- */
+        /* --- PROPUESTA DE VALOR --- */
         .propuesta-valor {
             padding: 100px 10%;
-            background: #FFFFFF;
-            position: relative;
-            color: var(--azul-profundo);
         }
 
         .container-propuesta {
@@ -289,26 +202,8 @@
             text-align: left;
         }
 
-        .texto-introductorio h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 30px;
-            color: var(--azul-profundo);
-            line-height: 1.2;
-        }
-
         .texto-introductorio h2 span { 
             color: var(--oro-exito); 
-        }
-
-        .texto-introductorio p { 
-            margin-bottom: 25px; 
-            color: #444444;
-            font-size: 1.1rem;
-        }
-
-        .texto-introductorio p.resaltado {
-            font-weight: 400;
         }
 
         .texto-introductorio p.resaltado span { 
@@ -323,37 +218,26 @@
             gap: 25px;
         }
 
-        .capsula-solida {
+        .capsula-vidrio, .capsula-solida {
             display: flex;
             align-items: center;
             gap: 20px;
-            background: #FFFFFF;
-            border: 1px solid #F0F0F0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             border-radius: 60px;
             padding: 25px 35px;
-            transition: all 0.4s ease;
         }
 
-        .capsula-solida:hover {
-            border-color: var(--oro-exito);
-            transform: translateX(15px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1);
-        }
-
-        .capsula-solida i {
+        .capsula-vidrio i, .capsula-solida i {
             font-size: 1.8rem;
             color: var(--oro-exito);
             min-width: 40px;
             text-align: center;
         }
 
-        .capsula-solida p {
+        .capsula-vidrio p, .capsula-solida p {
             font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--azul-profundo);
             margin: 0;
         }
 
@@ -389,24 +273,39 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* --- RESPONSIVE TICKET #3 --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
-            .container-propuesta { 
-                flex-direction: column; 
+            .hero, .container-propuesta {
+                flex-direction: column;
+                height: auto;
+                padding: 120px 5% 60px;
                 text-align: center;
                 gap: 50px;
             }
-            .texto-introductorio {
+            .hero-content, .texto-introductorio {
+                max-width: 100%;
                 text-align: center;
             }
-            .capsula-solida { 
+            .hero-image {
+                width: 100%;
+                max-width: 400px;
+                height: 450px;
+            }
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            .capsula-vidrio, .capsula-solida { 
                 flex-direction: column; 
                 border-radius: 30px; 
                 padding: 30px;
             }
-            .capsula-solida:hover {
-                transform: translateY(-5px);
-            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .titulo-seccion { font-size: 2rem; }
+            .servicios { padding: 60px 5%; }
         }
     </style>
 </head>
@@ -418,8 +317,8 @@
             <h1>BIENESTAR QUE <br><span>ELEVA TU POTENCIAL.</span></h1>
             <p>En Smartlife deconstruimos el bienestar estratégico para que descubras tu ruta práctica, auténtica y
                 divertida hacia el alto rendimiento.</p>
-            <a href="#" class="btn btn-oro">Inicia tu Ascenso</a>
-            <a href="#" class="btn btn-outline">Conoce a Emilia</a>
+            <a href="#" class="btn btn-primary">Inicia tu Ascenso</a>
+            <a href="#" class="btn btn-secondary">Conoce a Emilia</a>
         </div>
         <div class="hero-image">
             <!-- Aquí insertaremos la imagen de Emilia cuando la tengamos -->
@@ -461,7 +360,7 @@
             </div>
         </div>
         <div class="cta-container">
-            <a href="#" class="btn btn-glow">Agenda tu Diagnóstico Digital</a>
+            <a href="#" class="btn btn-primary">Agenda tu Diagnóstico Digital</a>
         </div>
     </section>
 
