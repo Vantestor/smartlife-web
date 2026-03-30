@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
+            --azul-marca: #277a94; /* NUEVO: Color del logo teal/azul */
             --oro-exito: #D4AF37;
-            --azul-profundo: #050A14; /* Solo para textos */
+            --azul-profundo: #050A14;
             --gris-suave: #F8F9FA;
             --blanco-puro: #FFFFFF;
             --texto-oscuro: #1A1A1A;
@@ -49,6 +50,7 @@
         h1, h2, h3 {
             color: var(--azul-profundo);
             font-family: 'Playfair Display', serif;
+            font-weight: 700;
         }
 
         p {
@@ -90,19 +92,19 @@
             width: 450px;
             height: 550px;
             background: var(--blanco-puro);
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 2px solid var(--oro-exito);
             border-radius: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: var(--sombra-suave);
+            overflow: hidden;
         }
 
-        .hero-image::after {
-            content: "Espacio para Fotografía de Emilia";
-            color: var(--oro-exito);
-            font-size: 0.8rem;
-            text-transform: uppercase;
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* --- BOTONES --- */
@@ -181,64 +183,184 @@
             display: block;
         }
 
+        /* --- SECCIÓN BRAND (Fondo Teal) --- */
+        .section-brand {
+            padding: 100px 10%;
+            background-color: var(--azul-marca);
+            color: var(--blanco-puro);
+            text-align: center;
+        }
+
+        .section-brand h2, .section-brand h3 {
+            color: var(--blanco-puro);
+        }
+
+        .section-brand .titulo-seccion span {
+            color: var(--oro-exito);
+        }
+
+        .card-brand {
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.5s ease;
+            text-align: center;
+        }
+
+        .card-brand:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-10px);
+            border-color: var(--oro-exito);
+        }
+
+        .card-brand i {
+            font-size: 2.5rem;
+            color: var(--oro-exito);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card-brand h3 {
+            color: var(--oro-exito);
+            margin-bottom: 15px;
+        }
+
+        .card-brand p {
+            color: rgba(255,255,255,0.9);
+        }
+
         .cta-container {
             margin-top: 60px;
         }
 
-        /* --- PROPUESTA DE VALOR --- */
-        .propuesta-valor {
+        /* --- SOBRE MÍ (Section White) --- */
+        .sobre-mi {
             padding: 100px 10%;
+            background-color: var(--blanco-puro);
         }
 
-        .container-propuesta {
+        .sobre-mi-container {
             display: flex;
+            align-items: center;
             gap: 80px;
+        }
+
+        .sobre-mi-texto {
+            flex: 1.5;
+        }
+
+        .sobre-mi-texto h2 span {
+            color: var(--azul-marca);
+        }
+
+        .sobre-mi-foto {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .photo-frame {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 5px solid var(--oro-exito);
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .resaltado {
+            font-weight: 700;
+            color: var(--azul-marca);
+        }
+
+        /* --- FAQ SECTION --- */
+        .faq {
+            padding: 100px 10%;
+            background-color: var(--blanco-puro);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--borde-suave);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 20px 0;
+            background: none;
+            border: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--azul-profundo);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .texto-introductorio {
-            flex: 1.2;
-            max-width: 600px;
-            text-align: left;
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: #555;
         }
 
-        .texto-introductorio h2 span { 
-            color: var(--oro-exito); 
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 20px;
         }
 
-        .texto-introductorio p.resaltado span { 
-            color: var(--oro-exito); 
-            font-weight: 700; 
+        /* --- MÁS HERRAMIENTAS --- */
+        .recursos {
+            padding: 100px 10%;
+            background-color: var(--gris-suave);
         }
 
-        .pilares-valor {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
+        .grid-recursos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .capsula-vidrio, .capsula-solida {
+        .card-recurso {
+            background: var(--blanco-puro);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: 0.3s;
             display: flex;
             align-items: center;
             gap: 20px;
-            border-radius: 60px;
-            padding: 25px 35px;
         }
 
-        .capsula-vidrio i, .capsula-solida i {
-            font-size: 1.8rem;
-            color: var(--oro-exito);
-            min-width: 40px;
-            text-align: center;
+        .card-recurso:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
-        .capsula-vidrio p, .capsula-solida p {
-            font-size: 0.85rem;
+        .card-recurso i {
+            font-size: 2rem;
+            color: var(--azul-marca);
+        }
+
+        .card-recurso h4 {
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0;
         }
 
         /* --- WHATSAPP FLOTANTE --- */
@@ -321,39 +443,39 @@
             <a href="#" class="btn btn-secondary">Conoce a Emilia</a>
         </div>
         <div class="hero-image">
-            <!-- Aquí insertaremos la imagen de Emilia cuando la tengamos -->
+            <img src="Activos_Visuales/fotografia.png" alt="Emilia - Smartlife Bienestar Estratégico">
         </div>
     </section>
 
-    <section class="servicios" id="metodologia">
+    <section class="section-brand" id="metodologia">
         <h2 class="titulo-seccion">Los 6 Pilares del <span>Bienestar Digital</span></h2>
         <div class="grid-servicios">
-            <div class="card">
+            <div class="card-brand">
                 <i class="fa-solid fa-scale-balanced"></i>
                 <h3>Equilibrio Digital</h3>
                 <p>Encuentra la armonía perfecta entre tus herramientas tecnológicas y tu paz interior.</p>
             </div>
-            <div class="card">
+            <div class="card-brand">
                 <i class="fa-solid fa-bullseye"></i>
                 <h3>Enfoque Profundo</h3>
                 <p>Blindaje cognitivo para ignorar el ruido y potenciar tu genialidad creativa.</p>
             </div>
-            <div class="card">
+            <div class="card-brand">
                 <i class="fa-solid fa-power-off"></i>
                 <h3>Desconexión Consciente</h3>
                 <p>Rituales estratégicos para apagar el sistema y recargar tu energía vital.</p>
             </div>
-            <div class="card">
+            <div class="card-brand">
                 <i class="fa-solid fa-bolt-lightning"></i>
                 <h3>Productividad Humana</h3>
                 <p>Sistemas de alto rendimiento que respetan tu ritmo biológico y mental.</p>
             </div>
-            <div class="card">
+            <div class="card-brand">
                 <i class="fa-solid fa-brain"></i>
                 <h3>Salud Mental 4.0</h3>
                 <p>Gestión emocional en la era de la inmediatez para una mente inquebrantable.</p>
             </div>
-            <div class="card">
+            <div class="card-brand">
                 <i class="fa-solid fa-user-group"></i>
                 <h3>Relaciones Reales</h3>
                 <p>Reconecta con lo esencial: vínculos humanos que trascienden la pantalla.</p>
@@ -364,35 +486,88 @@
         </div>
     </section>
 
-    <section class="propuesta-valor" id="propuesta">
-        <div class="container-propuesta">
-            <div class="texto-introductorio">
-                <h2>Por qué Smartlife es tu <br><span>Siguiente Nivel</span></h2>
+    <section class="sobre-mi" id="sobre-mi">
+        <div class="sobre-mi-container">
+            <div class="sobre-mi-texto">
+                <h2>¿Quién es Emilia? <br><span>Tu Guía Estratégica</span></h2>
                 <p>Durante estos años de experiencia profesional una pregunta ha venido guiando todo mi caminar: ¿Por qué si todos queremos bienestar, muy pocos lo consiguen? ¿Te pasa a vos también?</p>
                 <p>Es por eso que creé Smartlife Escuela de Bienestar, un espacio para nosotros, donde podrás descubrir, construir y vivir el bienestar auténtico y donde tu vida real es tu punto de partida.</p>
-                <p class="resaltado">Lo que vas a encontrar es <span>Bienestar Estratégico</span>. Vamos a diseñar y disfrutar juntos/as un bienestar que es motor para:</p>
+                <p>Lo que vas a encontrar es <span class="resaltado">Bienestar Estratégico</span>. Vamos a diseñar y disfrutar juntos/as un bienestar que es motor para liderar tu vida con más claridad y confianza.</p>
+                <p>Su expertise es la brújula, pero el camino lo construimos con lo que a vos sí te funciona.</p>
             </div>
-
-            <div class="pilares-valor">
-                <div class="capsula-solida">
-                    <i class="fa-solid fa-crosshairs"></i>
-                    <p>Liderar tu bienestar con más claridad y confianza</p>
-                </div>
-                <div class="capsula-solida">
-                    <i class="fa-solid fa-building-user"></i>
-                    <p>Construir y vivir una familia y/o negocio que reflejen lo que sos</p>
-                </div>
-                <div class="capsula-solida">
-                    <i class="fa-solid fa-star"></i>
-                    <p>Disfrutar del proceso, sin culpas ni complicaciones innecesarias</p>
-                </div>
-                <div class="capsula-solida">
-                    <i class="fa-solid fa-lightbulb"></i>
-                    <p>Recuperar tu energía y vitalidad para lo que de verdad importa</p>
+            <div class="sobre-mi-foto">
+                <div class="photo-frame">
+                    <img src="Activos_Visuales/fotografia.png" alt="Emilia - Smartlife">
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="faq" id="faq">
+        <h2 class="titulo-seccion">Preguntas <span>Frecuentes</span></h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">¿Qué es el Bienestar Estratégico? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>Es un enfoque práctico que integra herramientas de productividad, salud mental y equilibrio digital para optimizar tu rendimiento sin sacrificar tu paz interior.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Para quién es Smartlife? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>Para profesionales, emprendedores y cualquier persona que busque liderar su vida con mayor claridad y eficiencia en un mundo digital acelerado.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Cómo puedo iniciar mi proceso? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>El primer paso es agendar un Diagnóstico Digital gratuito donde analizaremos tus necesidades y diseñaremos tu ruta personalizada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="recursos" id="herramientas">
+        <h2 class="titulo-seccion">Más <span>Herramientas</span></h2>
+        <div class="grid-recursos">
+            <div class="card-recurso">
+                <i class="fa-solid fa-file-pdf"></i>
+                <div>
+                    <h4>Guía de Desconexión</h4>
+                    <p>Rituales para cerrar tu día laboral.</p>
+                </div>
+            </div>
+            <div class="card-recurso">
+                <i class="fa-solid fa-calendar-check"></i>
+                <div>
+                    <h4>Planner Semanal</h4>
+                    <p>Organiza tu energía, no solo tu tiempo.</p>
+                </div>
+            </div>
+            <div class="card-recurso">
+                <i class="fa-solid fa-headphones"></i>
+                <div>
+                    <h4>Audio de Enfoque</h4>
+                    <p>Frecuencias para potenciar tu concentración.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Funcionalidad básica del acordeón
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                faqItem.classList.toggle('active');
+                
+                // Cerrar otros items (opcional)
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) item.classList.remove('active');
+                });
+            });
+        });
+    </script>
 
     <a href="https://wa.me/50688000000" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
